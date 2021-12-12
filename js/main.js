@@ -14,7 +14,7 @@ class Juego {
     inicializar() {
         this.elegirColor = this.elegirColor.bind(this);
         btnEmpezar.classList.add('hide');
-        this.nivel = 1;
+        this.nivel = 4;
         this.colores = {
             celeste,
             violeta,
@@ -86,20 +86,20 @@ class Juego {
     }
 
     agregarEventosClick() {
-        this.colores.celeste.addEventListener('click', this.elegirColor);
-        this.colores.violeta.addEventListener('click', this.elegirColor);
-        this.colores.naranja.addEventListener('click', this.elegirColor);
-        this.colores.verde.addEventListener('click', this.elegirColor);
+        this.colores.celeste.addEventListener('mousedown', this.elegirColor);
+        this.colores.violeta.addEventListener('mousedown', this.elegirColor);
+        this.colores.naranja.addEventListener('mousedown', this.elegirColor);
+        this.colores.verde.addEventListener('mousedown', this.elegirColor);
     }
 
     elegirColor(ev) {
         const nombreColor = ev.target.dataset.color;
-        const numeroColor = transformarColorANumero(nombreColor);
-        this.iluminarColor(numeroColor);
+        const numeroColor = this.transformarColorANumero(nombreColor);
+        this.iluminarColor(nombreColor);
         if (numeroColor === this.secuencia[this.subnivel]) {
             this.subnivel++;
             
-        }
+        } 
     }
 }
 
